@@ -3,6 +3,7 @@ module github.com/arivlav/auth
 go 1.21
 
 require (
+	github.com/brianvoe/gofakeit v3.18.0+incompatible
 	github.com/fatih/color v1.16.0
 	github.com/golang/protobuf v1.5.3
 	google.golang.org/grpc v1.61.1
