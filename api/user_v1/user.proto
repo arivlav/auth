@@ -29,7 +29,7 @@ message UserInfo {
 }
 
 message User {
-  int64 id = 1;
+  uint64 id = 1;
   UserInfo user = 2;
   google.protobuf.Timestamp created_at = 3;
   google.protobuf.Timestamp updated_at = 4;
@@ -42,11 +42,11 @@ message CreateRequest {
 }
 
 message CreateResponse {
-  int64 id = 1;
+  uint64 id = 1;
 }
 
 message GetRequest {
-  int64 id = 1;
+  uint64 id = 1;
 }
 
 message GetResponse {
@@ -54,14 +54,14 @@ message GetResponse {
 }
 
 message UpdateRequest {
-  int64 id = 1;
+  uint64 id = 1;
   google.protobuf.StringValue name = 2;
   google.protobuf.StringValue email = 3;
   Role role = 4;
 }
 
 message DeleteRequest {
-  int64 id = 1;
+  uint64 id = 1;
 }
 
 

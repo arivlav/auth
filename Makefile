@@ -3,6 +3,9 @@ LOCAL_BIN:=$(CURDIR)/bin
 install-golangci-lint:
 	GOBIN=$(LOCAL_BIN) go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.53.3
 
+clean-golangci-cache:
+	GOBIN=$(LOCAL_BIN) $(LOCAL_BIN)/golangci-lint cache clean && go clean -modcache -cache -i
+
 lint:
 	GOBIN=$(LOCAL_BIN) $(LOCAL_BIN)/golangci-lint run ./... --config .golangci.pipeline.yaml
 
