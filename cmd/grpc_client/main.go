@@ -45,13 +45,6 @@ func main() {
 	}
 	log.Printf(color.RedString("New user have id:\n"), color.GreenString("%+v", createReq.GetId()))
 
-	//get..
-	getReq, getErr := c.Get(ctx, &desc.GetRequest{Id: userID})
-	if getErr != nil {
-		log.Fatalf("failed to get user by id: %v", getErr)
-	}
-	log.Printf(color.RedString("User info:\n"), color.GreenString("%+v", getReq.GetUser()))
-
 	//update...
 	randRole, _ := rand.Int(rand.Reader, big.NewInt(3))
 	newRole := desc.Role(randRole.Uint64())
