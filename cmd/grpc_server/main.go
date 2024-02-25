@@ -59,7 +59,7 @@ func (s *server) Get(_ context.Context, req *desc.GetRequest) (*desc.GetResponse
 
 func printNotEmptyValue(key string, value *wrappers.StringValue) {
 	if value != nil {
-		log.Printf("New %s is %s", key, value)
+		log.Printf("New %s %s is", key, value)
 	}
 }
 
