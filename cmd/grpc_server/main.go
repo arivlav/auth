@@ -41,7 +41,6 @@ func (s *server) Get(_ context.Context, req *desc.GetRequest) (*desc.GetResponse
 	log.Printf("User id: %d", req.GetId())
 
 	randRole, _ := rand.Int(rand.Reader, big.NewInt(3))
-	newRole := desc.Role(randRole.Uint64())
 
 	return &desc.GetResponse{
 		User: &desc.User{
@@ -49,7 +48,7 @@ func (s *server) Get(_ context.Context, req *desc.GetRequest) (*desc.GetResponse
 			User: &desc.UserInfo{
 				Name:  gofakeit.Name(),
 				Email: gofakeit.Email(),
-				Role:  newRole,
+				Role:  desc.Role(randRole.Uint64()),
 			},
 			CreatedAt: timestamppb.New(gofakeit.Date()),
 			UpdatedAt: timestamppb.New(gofakeit.Date()),
@@ -70,16 +69,14 @@ func (s *server) Update(_ context.Context, req *desc.UpdateRequest) (*empty.Empt
 	printNotEmptyValue("mail", req.GetEmail())
 	log.Printf("New role is %v", req.GetRole())
 
-	emptyResponse := empty.Empty{}
-	return &emptyResponse, nil
+	return &empty.Empty{}, nil
 }
 
 // Delete ...
 func (s *server) Delete(_ context.Context, req *desc.DeleteRequest) (*empty.Empty, error) {
 	log.Printf("User %d is deleted", req.GetId())
 
-	emptyResponse := empty.Empty{}
-	return &emptyResponse, nil
+	return &empty.Empty{}, nil
 }
 
 func main() {
