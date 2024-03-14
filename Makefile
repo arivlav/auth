@@ -34,3 +34,8 @@ build:
 
 copy-to-server:
 	scp service_auth root@91.236.199.95:
+
+docker-build-and-push:
+	docker buildx build --no-cache --platform linux/amd64 -t cr.selcloud.ru/arivlav/auth-server:v0.0.1 .
+	docker login -u token -p CRgAAAAAW0JL3Q-Rc30KetW0BDKDpN18vpAyJXAt cr.selcloud.ru/arivlav
+	docker push cr.selcloud.ru/arivlav/auth-server:v0.0.1
